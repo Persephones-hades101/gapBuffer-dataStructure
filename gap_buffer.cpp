@@ -67,10 +67,19 @@ void move_cursor_right(vector<char> &buffer, int &gap_start, int &gap_end)
 {
   if (gap_end == buffer.size() - 1)
     return;
-  buffer[gap_start] = buffer[gap_start + 1];
+  buffer[gap_start] = buffer[gap_end + 1];
   gap_start++;
   gap_end++;
   buffer[gap_end] = '_';
+}
+
+void delete_(vector<char> &buffer, int &gap_start)
+{
+  if (gap_start == 0)
+    return;
+
+  buffer[gap_start - 1] = '_';
+  gap_start--;
 }
 
 void insert_in_buffer_multiple_times(vector<char> &buffer, int &gap_start, int &gap_end)
@@ -113,8 +122,9 @@ int main()
   printBuffer(buffer);
   insert_in_buffer_multiple_times(buffer, gap_start, gap_end);
   printBuffer(buffer);
-  // move_cursor_right(buffer, gap_start, gap_end);
-  // printBuffer(buffer);
-
+  move_cursor_right(buffer, gap_start, gap_end);
+  printBuffer(buffer);
+  delete_(buffer, gap_start);
+  printBuffer(buffer);
   return 0;
 }
