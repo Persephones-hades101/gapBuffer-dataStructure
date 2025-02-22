@@ -1,4 +1,10 @@
 .vscode
 *.exe
 myenv
-*.py
+demo.py
+just for testing
+a.py
+pygap.cpp
+*.pyd
+*.o
+build
